@@ -1,7 +1,7 @@
 # Marketplace using Celo Dapp
 
 ### Demo Link
-https://hopeful-shannon-cdcbc7.netlify.app/
+https://pedantic-shirley-7757a6.netlify.app/
 
 ## Usage
 
