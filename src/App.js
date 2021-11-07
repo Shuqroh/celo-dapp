@@ -5,7 +5,7 @@ import BigNumber from "bignumber.js";
 import MarketPlace from "./contract/marketplace.abi.json";
 import Erc20Abi from "./contract/erc20.abi.json";
 import { useToasts } from "react-toast-notifications";
-import Loading from "./Loading";
+//import Loading from "./Loading";
 import Nav from "./components/Nav.js";
 import Footer from "./components/Footer.js";
 
