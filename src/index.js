@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ToastProvider } from 'react-toast-notifications';
+import './assets/css/bootstrap.min.css';
+import './assets/css/custom.css';
+import './assets/css/carousel.css';
+import './assets/css/carousel-recommendation.css';
 
 ReactDOM.render(
   <React.StrictMode>
