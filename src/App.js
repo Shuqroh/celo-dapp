@@ -159,6 +159,11 @@ function App() {
     }
   }
 
+  var divStyle = {
+    color: 'white',
+    textAlign: 'center'
+  };
+
 
 
 
@@ -192,7 +197,7 @@ function App() {
 
               {products.map((product, index) => (
                 <div className="col-sm-6 col-md-4 product" key={index}>
-                  <a href="#favorites" className="favorites" data-favorite="inactive" onClick={(e) => like(e, index)}><i className="ion-ios-heart-outline"></i></a>
+                  <a href="#favorites" className="favorites" data-favorite="inactive" onClick={(e) => like(e, index)} style={divStyle}>Like</a>
                   <a href="./"><img src={product[2]} alt="HP Chromebook 11" /></a>
 
                   <div className="content">
@@ -215,7 +220,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 }
 
