@@ -27,9 +27,17 @@ contract Marketplace {
         string location;
         uint price;
         uint sold;
+        uint likes;
     }
 
     mapping (uint => Product) internal products;
+     mapping (address =>  mapping (uint => bool)) internal likedProduct;
+     mapping (address =>  uint[]) public myProducts;
+
+    modifier hasLiked(uint _index) {
+        require(likedProduct[msg.sender][_index] != true, "You have already liked this product");
+        _;
+    }
 
     function writeProduct(
         string memory _name,
@@ -39,6 +47,7 @@ contract Marketplace {
         uint _price
     ) public {
         uint _sold = 0;
+        uint _likes = 0;
         products[productsLength] = Product(
             payable(msg.sender),
             _name,
@@ -46,28 +55,29 @@ contract Marketplace {
             _description,
             _location,
             _price,
-            _sold
+            _sold,
+            _likes
         );
         productsLength++;
     }
 
     function readProduct(uint _index) public view returns (
-        address payable,
         string memory, 
         string memory, 
         string memory, 
         string memory, 
         uint, 
+        uint,
         uint
     ) {
         return (
-            products[_index].owner,
             products[_index].name, 
             products[_index].image, 
             products[_index].description, 
             products[_index].location, 
             products[_index].price,
-            products[_index].sold
+            products[_index].sold,
+            products[_index].likes
         );
     }
     
@@ -81,7 +91,15 @@ contract Marketplace {
           "Transfer failed."
         );
         products[_index].sold++;
+
+        // save the product sold
+        myProducts[msg.sender].push(_index);
     }
+
+    function likeProduct(uint _index) hasLiked(_index) public payable  {
+        products[_index].likes++;
+    }
+    
     
     function getProductsLength() public view returns (uint) {
         return (productsLength);
