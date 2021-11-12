@@ -147,7 +147,6 @@ function App() {
   }
 
   async function like(event, id) {
-    console.log(id);
     event.preventDefault();
     addToast("⌛ Sending... ", { appearance: "success", autoDismiss: false });
     try {
