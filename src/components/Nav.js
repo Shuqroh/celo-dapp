@@ -17,8 +17,7 @@ export default function Nav({ account, balance }) {
                 <div id="navbar" className="navbar-collapse collapse">
                     <ul className="nav navbar-nav">
                         <li className="active"><a href="/">Home</a></li>
-                        <li><a href="#catalog">Catalog</a></li>
-                        <li><a href="#blog">Blog</a></li>
+                        
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                         <li><a href="#account"> <i className="ion-android-person"></i> Hello, {account} </a></li>

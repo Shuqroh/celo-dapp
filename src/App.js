@@ -149,7 +149,7 @@ function App() {
   async function like(event, id) {
     console.log(id);
     event.preventDefault();
-    addToast("⌛ Sending... ", { appearance: "success", autoDismiss: false });
+    addToast("⌛ Sending... ", { appearance: "success", autoDismiss: true });
     try {
       await contract.methods.likeProduct(id).send({ from: accounts[0] });
       addToast("🎉 Like Successful", { appearance: "success", autoDismiss: true });
