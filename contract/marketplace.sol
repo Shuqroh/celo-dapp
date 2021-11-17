@@ -27,6 +27,7 @@ contract Marketplace {
         string location;
         uint price;
         uint sold;
+        uint like;
     }
 
     mapping (uint => Product) internal products;
@@ -39,6 +40,7 @@ contract Marketplace {
         uint _price
     ) public {
         uint _sold = 0;
+        uint _like = 0;
         products[productsLength] = Product(
             payable(msg.sender),
             _name,
@@ -46,7 +48,8 @@ contract Marketplace {
             _description,
             _location,
             _price,
-            _sold
+            _sold,
+            _like
         );
         productsLength++;
     }
@@ -58,16 +61,19 @@ contract Marketplace {
         string memory, 
         string memory, 
         uint, 
+        uint,
         uint
     ) {
+        Product storage product = products[_index];
         return (
-            products[_index].owner,
-            products[_index].name, 
-            products[_index].image, 
-            products[_index].description, 
-            products[_index].location, 
-            products[_index].price,
-            products[_index].sold
+            product.owner,
+            product.name,
+            product.image,
+            product.description,
+            product.location,
+            product.price,
+            product.sold,
+            product.like
         );
     }
     
@@ -81,6 +87,12 @@ contract Marketplace {
           "Transfer failed."
         );
         products[_index].sold++;
+    }
+    
+    
+    function likeProduct(uint _index) public returns (bool)  {
+        products[_index].like++;
+        return true;
     }
     
     function getProductsLength() public view returns (uint) {
